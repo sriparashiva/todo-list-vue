@@ -43,7 +43,9 @@
       <div v-if="filteredTodos.length === 0" class="noTasks">
         No tasks to show
       </div>
-      <div class="editTip">Double click on a task to edit it</div>
+      <div v-if="filteredTodos.length > 0" class="editTip">
+        Double click on a task to edit it
+      </div>
       <div class="bottom">
         <div class="bottom-left">
           <input
