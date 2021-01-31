@@ -59,7 +59,6 @@
 
   const sheetUrl =
     "https://spreadsheets.google.com/feeds/list/1gepSNvYaahoGMIqf103cl15z3Z-NL3nKW8b9wqGmCGk/1/public/values?alt=json";
-
   export default {
     name: "SocialGrid",
     components: {
@@ -194,11 +193,11 @@
   }
   .filters {
     display: flex;
-    align-items: center;
     margin: 1rem 0;
 
     .filters__btnGroup {
       display: flex;
+      flex-flow: row wrap;
       align-items: center;
       gap: 0.5rem;
       margin-left: 1rem;
