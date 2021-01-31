@@ -1,4 +1,4 @@
-# KAILASA Ditial Initiatives Multi-filter
+# KAILASA Digital Initiatives Multi-filter
 
 ## Project setup
 ```
