@@ -5,7 +5,7 @@
       <button
         class="filters__btn"
         :class="{ active: allCategories }"
-        @click="allCategories = !allCategories"
+        @click="toggleAllCategories"
       >
         All
       </button>
@@ -14,7 +14,7 @@
         :key="index"
         class="filters__btn"
         :class="{ active: category.active }"
-        @click="category.active = !category.active"
+        @click="toggleCategory(category)"
       >
         {{ category.name }}
       </button>
@@ -24,10 +24,12 @@
     <div class="filters__heading">Filter by Platform:</div>
     <div class="filters__btnGroup">
       <div class="filters__checkbox">
-        <input type="checkbox" id="allPlatforms" v-model="allPlatforms" /><label
-          for="allPlatforms"
-          >All</label
-        >
+        <input
+          type="checkbox"
+          id="allPlatforms"
+          v-model="allPlatforms"
+          @change="toggleAllPlatforms"
+        /><label for="allPlatforms">All</label>
       </div>
       <div
         class="filters__checkbox"
@@ -38,6 +40,7 @@
           type="checkbox"
           :id="platform.name"
           v-model="platform.active"
+          @change="togglePlatform(platform)"
         /><label :for="platform.name">{{ platform.name }}</label>
       </div>
     </div>
@@ -71,23 +74,11 @@
         platforms: [],
         allCategories: true,
         allPlatforms: true,
+        activeCategories: [],
+        activePlatforms: [],
       };
     },
     computed: {
-      activeCategories() {
-        let activeCats = [];
-        this.categories.forEach((category) => {
-          if (category.active) activeCats.push(category.name);
-        });
-        return activeCats;
-      },
-      activePlatforms() {
-        let activePlats = [];
-        this.platforms.forEach((platform) => {
-          if (platform.active) activePlats.push(platform.name);
-        });
-        return activePlats;
-      },
       filteredLinks() {
         if (
           this.activeCategories.length > 0 ||
@@ -109,34 +100,7 @@
             );
           }
         } else {
-          this.setAllShown();
           return this.socialLinks;
-        }
-      },
-    },
-    watch: {
-      allPlatforms() {
-        if (this.allPlatforms) {
-          this.platforms.forEach((platform) => (platform.active = false));
-        }
-      },
-      allCategories() {
-        if (this.allCategories) {
-          this.categories.forEach((category) => (category.active = false));
-        }
-      },
-      activePlatforms() {
-        if (this.activePlatforms.length > 0) {
-          this.allPlatforms = false;
-        } else {
-          this.allPlatforms = true;
-        }
-      },
-      activeCategories() {
-        if (this.activeCategories.length > 0) {
-          this.allCategories = false;
-        } else {
-          this.allCategories = true;
         }
       },
     },
@@ -171,9 +135,41 @@
           this.platforms.push({ name: platform, active: false })
         );
       },
-      setAllShown() {
-        this.allCategories = true;
-        this.allPlatforms = true;
+      toggleCategory(category) {
+        category.active = !category.active;
+        if (category.active) {
+          this.allCategories = false;
+          this.activeCategories.push(category.name);
+        } else {
+          this.activeCategories = this.activeCategories.filter(
+            (activeCategory) => activeCategory !== category.name
+          );
+          if (this.activeCategories.length === 0) this.allCategories = true;
+        }
+      },
+      togglePlatform(platform) {
+        if (platform.active) {
+          this.allPlatforms = false;
+          this.activePlatforms.push(platform.name);
+        } else {
+          this.activePlatforms = this.activePlatforms.filter(
+            (activePlatform) => activePlatform !== platform.name
+          );
+          if (this.activePlatforms.length === 0) this.allPlatforms = true;
+        }
+      },
+      toggleAllCategories() {
+        this.allCategories = !this.allCategories;
+        if (this.allCategories) {
+          this.categories.forEach((category) => (category.active = false));
+          this.activeCategories = [];
+        }
+      },
+      toggleAllPlatforms() {
+        if (this.allPlatforms) {
+          this.platforms.forEach((platform) => (platform.active = false));
+          this.activePlatforms = [];
+        }
       },
     },
     created() {
