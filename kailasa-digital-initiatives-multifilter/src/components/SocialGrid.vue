@@ -60,8 +60,8 @@
   import SocialItem from "./SocialItem.vue";
   import axios from "axios";
 
-  const sheetUrl =
-    "https://spreadsheets.google.com/feeds/list/1gepSNvYaahoGMIqf103cl15z3Z-NL3nKW8b9wqGmCGk/1/public/values?alt=json";
+  //Source data Google Sheet ID
+  const sheetID = "1gepSNvYaahoGMIqf103cl15z3Z-NL3nKW8b9wqGmCGk";
   export default {
     name: "SocialGrid",
     components: {
@@ -80,26 +80,34 @@
     },
     computed: {
       filteredLinks() {
+        // If any category/platform filters have been selected
         if (
           this.activeCategories.length > 0 ||
           this.activePlatforms.length > 0
         ) {
+          // If all categories are selected, filter only for platforms
           if (this.allCategories) {
             return this.socialLinks.filter((link) =>
               this.activePlatforms.includes(link.platform)
             );
-          } else if (this.allPlatforms) {
+          }
+          // If all platforms are selected, filter only for categories
+          else if (this.allPlatforms) {
             return this.socialLinks.filter((link) =>
               this.activeCategories.includes(link.category)
             );
-          } else {
+          }
+          // If both categories and platforms are selected, filter for both
+          else {
             return this.socialLinks.filter(
               (link) =>
                 this.activeCategories.includes(link.category) &&
                 this.activePlatforms.includes(link.platform)
             );
           }
-        } else {
+        }
+        // If no categories/platforms are selected, display all links
+        else {
           return this.socialLinks;
         }
       },
@@ -124,37 +132,51 @@
           // Add to the set of categories
           platformSet.add(value.gsx$platform.$t);
 
-          // Push entry into the data list
+          // Push entry into the list of all links
           this.socialLinks.push(entry);
         });
 
+        // Add all categories from the Set to the object array
         categorySet.forEach((category) =>
           this.categories.push({ name: category, active: false })
         );
+
+        // Add all platforms from the Set to the object array
         platformSet.forEach((platform) =>
           this.platforms.push({ name: platform, active: false })
         );
       },
       toggleCategory(category) {
         category.active = !category.active;
+
+        // If this category filter has been turned on, add it to the active categories list and turn off the 'All' button
         if (category.active) {
           this.allCategories = false;
           this.activeCategories.push(category.name);
-        } else {
+        }
+        // If this category filter has been turned off
+        else {
+          // Remove it from the active categories list
           this.activeCategories = this.activeCategories.filter(
             (activeCategory) => activeCategory !== category.name
           );
+          // If no other categories remain in active list, turn on the 'All' button
           if (this.activeCategories.length === 0) this.allCategories = true;
         }
       },
       togglePlatform(platform) {
+        // If this platform filter has been turned on, add it to the active platforms list and turn off the 'All' button
         if (platform.active) {
           this.allPlatforms = false;
           this.activePlatforms.push(platform.name);
-        } else {
+        }
+        // If this platform filter has been turned off
+        else {
+          // Remove it from the active platforms list
           this.activePlatforms = this.activePlatforms.filter(
             (activePlatform) => activePlatform !== platform.name
           );
+          // If no other platforms remain in active list, turn on the 'All' button
           if (this.activePlatforms.length === 0) this.allPlatforms = true;
         }
       },
@@ -174,7 +196,9 @@
     },
     created() {
       axios
-        .get(sheetUrl)
+        .get(
+          `https://spreadsheets.google.com/feeds/list/${sheetID}/1/public/values?alt=json`
+        )
         .then((response) => this.parseData(response.data.feed.entry));
     },
   };
