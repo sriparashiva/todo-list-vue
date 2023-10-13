@@ -1,7 +1,7 @@
 <div align="center">
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
-<br>!todo-list-vue!
+<br>todo-list-vue
 </h1>
 <h3>◦ Power through your tasks with todo-list-vue!</h3>
 <h3>◦ Developed with the software and tools listed below.</h3>
@@ -79,19 +79,19 @@ Note: The codebase lacks clarity on specific application features and patterns d
 
 <details closed><summary>Root</summary>
 
-| File                                                                                     | Summary                                                                                                                                                                                                                                                                                                                                                                                              |
-| ---                                                                                      | ---                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [index.html](https://github.com/sriparashiva/todo-list-vue/blob/main/index.html)         | This code sets up the basic structure of an HTML document for a Vite app. It includes a viewport meta tag, a title for the app, and a script tag linking to the main JavaScript file. The main JavaScript file is responsible for rendering the app and is located in the /src directory.                                                                                                            |
-| [vite.config.js](https://github.com/sriparashiva/todo-list-vue/blob/main/vite.config.js) | This code is a Vite configuration file that uses the Vite plugin for Vue.js. It sets up an alias for the src directory and includes the Vue plugin. The resolve.alias allows paths to be written using the "@" symbol instead of file system paths, providing a simpler way to reference files in the project. This configuration enhances the development experience and improves code readability. |
+| File                                                                                     | Summary                                                                                                                                                                                                             |
+| ---                                                                                      | ---                                                                                                                                                                                                                 |
+| [index.html](https://github.com/sriparashiva/todo-list-vue/blob/main/index.html)         | This code defines the structure of a simple HTML file, including meta tags and a script tag to load the JavaScript code required for a Vite application. The app container is represented by the "app" div element. |
+| [vite.config.js](https://github.com/sriparashiva/todo-list-vue/blob/main/vite.config.js) | This code is a Vite configuration file that sets up a project with Vue.js + TypeScript. It utilizes the Vite plugin for Vue.js and establishes an alias for the'./src' directory.                                   |
 
 </details>
 
 <details closed><summary>Src</summary>
 
-| File                                                                           | Summary                                                                                                                                                                                                                                     |
-| ---                                                                            | ---                                                                                                                                                                                                                                         |
-| [App.vue](https://github.com/sriparashiva/todo-list-vue/blob/main/src/App.vue) | This code provides the functionality of a todo list app. Users can add, remove, and edit tasks. Tasks can be marked as completed, and users can also filter tasks by completion status. The code is implemented using the Vue.js framework. |
-| [main.js](https://github.com/sriparashiva/todo-list-vue/blob/main/src/main.js) | This code creates a Vue application, rendering the content of the App.vue file and mounts it to the element with the ID "app" in the HTML document.                                                                                         |
+| File                                                                           | Summary                                                                                                                                                                                                                                                                                                                                                     |
+| ---                                                                            | ---                                                                                                                                                                                                                                                                                                                                                         |
+| [App.vue](https://github.com/sriparashiva/todo-list-vue/blob/main/src/App.vue) | This code is for a todo list application. It allows the user to add, edit, and remove tasks. The tasks can be marked as completed or pending. The user can filter the tasks based on their completion status, and clear completed tasks. The code also provides a user-friendly interface with various features like checkboxes, input fields, and buttons. |
+| [main.js](https://github.com/sriparashiva/todo-list-vue/blob/main/src/main.js) | This code creates a Vue.js app by importing the necessary dependencies and mounting the App component to the element with the id "app" in an HTML document.                                                                                                                                                                                                 |
 
 </details>
 
