@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
 <br>todo-list-vue
 </h1>
-<h3>◦ Power through your tasks with todo-list-vue!</h3>
+<h3>◦ Organize with ease: Todo List Vue</h3>
 <h3>◦ Developed with the software and tools listed below.</h3>
 
 <p align="center">
@@ -44,26 +44,24 @@
 
 ## 📍 Overview
 
-The project is a TodoList application developed using Vue.js framework, allowing users to add, edit, and remove tasks. It provides features such as filtering tasks based on completion status, completing all tasks at once, and clearing completed tasks. The core purpose is to help users manage their tasks efficiently and stay organized. The value proposition lies in its simplicity, intuitive user interface, and the ability to customize and organize tasks effectively.
+The project is a Todo List application built using Vue.js. It enables users to add, remove, and edit tasks, mark tasks as completed, filter tasks based on their completion status, clear all completed tasks, and toggle the completion status of all tasks at once. The application's main purpose is to provide a user-friendly interface for managing and organizing tasks efficiently, offering convenience and productivity enhancement.
 
 ---
 
 ## ⚙️ Features
 
-| Feature                | Description                                                                                                                                               |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **⚙️ Architecture**     | The system follows a single-page application (SPA) architecture using Vue.js. It utilizes components-based design to structure the TodoList application.   |
-| **📖 Documentation**   | The repository lacks explicit documentation. Some code comments are present, but additional documentation would improve clarity and ease of maintenance.     |
-| **🔗 Dependencies**    | The system relies on Vue.js framework and various plugins/components provided by Vue ecosystem. Vite is used as a build tool for the Vue application. |
-| **🧩 Modularity**      | The system is organized into modular components, such as the App.vue file, enabling easier reusability, maintainability, and separation of concerns.     |
-| **✔️ Testing**          | The codebase does not include any tests, and there are no specific testing strategies or tools in place. The addition of appropriate testing would be beneficial.  |
-| **⚡️ Performance**      | Since it is a client-side application, the performance is affected by the user's system and browser performance. However, no specific performance optimizations are implemented. |
-| **🔐 Security**        | The todo-list application does not interact with any external systems or APIs. Data security measures are limited since this is a front-end only application. |
-| **🔀 Version Control** | The project uses Git as the version control system. The codebase is hosted on GitHub and follows a typical development workflow using branching and pull requests. |
-| **🔌 Integrations**    | There are no significant integrations with other systems or services. The application is self-contained and operates solely on the client-side.            |
-| **📶 Scalability**     | The system's ability to handle growth depends on the client's system capabilities as it is built as a client-side application. No specific scalability measures are seen. |
-
-Note: The codebase lacks clarity on specific application features and patterns due to limited details in the provided information.
+| Feature                | Description                                                                                                                                                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **⚙️ Architecture**     | The system follows a component-based architecture using Vue.js framework, with the main app logic defined in `src/App.vue`. It utilizes data binding to handle state and UI rendering.                          |
+| **📖 Documentation**   | The project lacks comprehensive documentation, but the codebase has meaningful variable and function names, making the code understandable. Certain sections may benefit from additional comments and explanation. |
+| **🔗 Dependencies**    | The system relies on Vue.js as the main framework and Vite as the build tool. It also utilizes the Vue Router package for client-side routing.                                                                     |
+| **🧩 Modularity**      | The codebase organizes components into separate files, promoting modularity and reusability. The `@` alias is used to access components from the `src` folder, providing easy navigation within the project.          |
+| **✔️ Testing**          | The project does not include specific testing frameworks or tools. It could benefit from the implementation of unit tests using libraries like Jest or Cypress for end-to-end testing.                      |
+| **⚡️ Performance**      | Since the project is relatively small and focused on front-end functionality, performance appears to be adequate. Further optimization may be required if working with larger data sets or additional features.     |
+| **🔐 Security**        | The project lacks explicit security measures, but since it is a client-side app and does not handle sensitive data, security concerns are minimal. Ensure proper data validation and sanitization on the backend. |
+| **🔀 Version Control** | The project uses Git for version control, following a standard commit and branch management approach.                                                                                                              |
+| **🔌 Integrations**    | The system does not interact with external systems or services directly but has the potential to integrate with backend APIs for data persistence and additional functionality.                                       |
+| **📶 Scalability**     | The modular and component-based architecture allows the system to scale easily with the addition of new components or features. It also enables parallel development by different team members.                  |
 
 ---
 
@@ -79,19 +77,19 @@ Note: The codebase lacks clarity on specific application features and patterns d
 
 <details closed><summary>Root</summary>
 
-| File                                                                                     | Summary                                                                                                                                                                                                             |
-| ---                                                                                      | ---                                                                                                                                                                                                                 |
-| [index.html](https://github.com/sriparashiva/todo-list-vue/blob/main/index.html)         | This code defines the structure of a simple HTML file, including meta tags and a script tag to load the JavaScript code required for a Vite application. The app container is represented by the "app" div element. |
-| [vite.config.js](https://github.com/sriparashiva/todo-list-vue/blob/main/vite.config.js) | This code is a Vite configuration file that sets up a project with Vue.js + TypeScript. It utilizes the Vite plugin for Vue.js and establishes an alias for the'./src' directory.                                   |
+| File                                                                                     | Summary                                                                                                                                                                                                                                                                                                                                         |
+| ---                                                                                      | ---                                                                                                                                                                                                                                                                                                                                             |
+| [index.html](https://github.com/sriparashiva/todo-list-vue/blob/main/index.html)         | This code is an HTML file that sets up the basic structure for a Vite app. It includes a div element with the id "app", which will be the target for rendering the app's content. The script tag at the bottom is used to import and execute the JavaScript code for the app, located in the "main.js" file.                                    |
+| [vite.config.js](https://github.com/sriparashiva/todo-list-vue/blob/main/vite.config.js) | This code is a configuration file written in JavaScript for Vite, a modern build tool for web development. It uses the `vite` package and the `vue` plug-in. The code imports functions for resolving file paths and defining the project configuration. It sets an alias for the `@` symbol, which represents the `src` folder of the project. |
 
 </details>
 
 <details closed><summary>Src</summary>
 
-| File                                                                           | Summary                                                                                                                                                                                                                                                                                                                                                     |
-| ---                                                                            | ---                                                                                                                                                                                                                                                                                                                                                         |
-| [App.vue](https://github.com/sriparashiva/todo-list-vue/blob/main/src/App.vue) | This code is for a todo list application. It allows the user to add, edit, and remove tasks. The tasks can be marked as completed or pending. The user can filter the tasks based on their completion status, and clear completed tasks. The code also provides a user-friendly interface with various features like checkboxes, input fields, and buttons. |
-| [main.js](https://github.com/sriparashiva/todo-list-vue/blob/main/src/main.js) | This code creates a Vue.js app by importing the necessary dependencies and mounting the App component to the element with the id "app" in an HTML document.                                                                                                                                                                                                 |
+| File                                                                           | Summary                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ---                                                                            | ---                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [App.vue](https://github.com/sriparashiva/todo-list-vue/blob/main/src/App.vue) | The code is for a simple Todo List application. It allows the user to add, remove, and edit todo items. The items can be marked as completed or incomplete, and the list can be filtered to show all tasks, only pending tasks, or only completed tasks. The user can also clear all completed tasks and toggle the completion status of all tasks at once. The code utilizes Vue.js for data binding and UI rendering. |
+| [main.js](https://github.com/sriparashiva/todo-list-vue/blob/main/src/main.js) | This code is importing the `createApp` function from the Vue library and the `App` component from a file called App.vue. It then calls `createApp` with the `App` component as an argument and mounts the app to the HTML element with the id "app" on the web page.                                                                                                                                                    |
 
 </details>
 
